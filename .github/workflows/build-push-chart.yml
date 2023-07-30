@@ -72,7 +72,6 @@ jobs:
       GPG_KEY: ${{ secrets.GPG_KEY }}
       gh_token: ${{ secrets.HELM_INDEXER_TOKEN }}
 
-
   sbom:
     uses: ortelius/workflow-toolkit/.github/workflows/sbom-generation-workflow.yml@cf5621d9d515b30f327262fcc356f36190ace596
     needs: [setenv, release]
@@ -92,4 +91,3 @@ jobs:
     secrets:
       DHPASS: ${{ secrets.DHPASS }}
       DHUSER: ${{ secrets.DHUSER }}
-  
