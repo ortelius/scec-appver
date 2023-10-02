@@ -9,6 +9,7 @@ import (
 
 	"github.com/arangodb/go-driver"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/swagger"
 	"github.com/ortelius/scec-commons/database"
 	"github.com/ortelius/scec-commons/model"
@@ -43,22 +44,22 @@ func GetAppvers(c *fiber.Ctx) error {
 
 	defer cursor.Close() // close the cursor when returning from this function
 
-	appver := model.NewAppvers() // define a list of appvers to be returned
+	applications := model.NewApplications() // define a list of appvers to be returned
 
 	for cursor.HasMore() { // loop thru all of the documents
 
-		appver := model.NewAppver() // fetched appver
-		var meta driver.DocumentMeta           // data about the fetch
+		appver := model.NewApplicationVersion() // fetched appver
+		var meta driver.DocumentMeta            // data about the fetch
 
 		// fetch a document from the cursor
 		if meta, err = cursor.ReadDocument(ctx, appver); err != nil {
 			logger.Sugar().Errorf("Failed to read document: %v", err)
 		}
-		appver.Appvers = append(appvers.Appvers, appver)       // add the Application Version to the list
-		logger.Sugar().Infof("Got doc with key '%s' from query\n", meta.Key) // log the key
+		applications.Applications = append(applications.Applications, appver) // add the Application Version to the list
+		logger.Sugar().Infof("Got doc with key '%s' from query\n", meta.Key)  // log the key
 	}
 
-	return c.JSON(appvers) // return the list of appvers in JSON format
+	return c.JSON(applications) // return the list of appvers in JSON format
 }
 
 // GetAppver godoc
@@ -92,7 +93,7 @@ func GetAppver(c *fiber.Ctx) error {
 
 	defer cursor.Close() // close the cursor when returning from this function
 
-	appver := model.NewAppvers() // define a appver to be returned
+	appver := model.NewApplicationVersion() // define a appver to be returned
 
 	if cursor.HasMore() { // appver found
 		var meta driver.DocumentMeta // data about the fetch
@@ -123,10 +124,10 @@ func GetAppver(c *fiber.Ctx) error {
 // @Router /msapi/appver [post]
 func NewAppver(c *fiber.Ctx) error {
 
-	var err error                  // for error handling
-	var meta driver.DocumentMeta   // data about the document
-	var ctx = context.Background() // use default database context
-	appver := new(model.Appver)    // define an appver to be returned
+	var err error                           // for error handling
+	var meta driver.DocumentMeta            // data about the document
+	var ctx = context.Background()          // use default database context
+	appver := model.NewApplicationVersion() // define an appver to be returned
 
 	if err = c.BodyParser(appver); err != nil { // parse the JSON into the appver object
 		return c.Status(503).Send([]byte(err.Error()))
