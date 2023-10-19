@@ -16,7 +16,7 @@ import (
 )
 
 var logger = database.InitLogger()
-var dbconn = database.InitializeDB()
+var dbconn = database.InitializeDB("evidence")
 
 // GetAppvers godoc
 // @Summary Get a List of appvers
