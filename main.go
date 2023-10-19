@@ -18,7 +18,7 @@ import (
 var logger = database.InitLogger()
 var dbconn = database.InitializeDB("evidence")
 
-// GetApplicationVersion godoc
+// GetApplicationVersions godoc
 // @Summary Get a List of ApplicationVersion
 // @Description Get a list of ApplicationVersion for the user.
 // @Tags ApplicationVersion
