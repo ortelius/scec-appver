@@ -70,7 +70,7 @@ func GetApplicationVersions(c *fiber.Ctx) error {
 // @Produce json
 // @Success 200
 // @Router /msapi/appver/:key [get]
-func GetAppver(c *fiber.Ctx) error {
+func GetApplicationVersion(c *fiber.Ctx) error {
 
 	var cursor driver.Cursor       // db cursor for rows
 	var err error                  // for error handling
@@ -149,10 +149,10 @@ func NewApplicationVersion(c *fiber.Ctx) error {
 // setupRoutes defines maps the routes to the functions
 func setupRoutes(app *fiber.App) {
 
-	app.Get("/swagger/*", swagger.HandlerDefault) // handle displaying the swagger
-	app.Get("/msapi/appver", GetApplicationVersions)          // list of ApplicationVersion
-	app.Get("/msapi/appver/:key", GetApplicationVersion)      // single ApplicationVersion based on name or key
-	app.Post("/msapi/appver", NewApplicationVersion)          // save a single ApplicationVersion
+	app.Get("/swagger/*", swagger.HandlerDefault)        // handle displaying the swagger
+	app.Get("/msapi/appver", GetApplicationVersions)     // list of ApplicationVersion
+	app.Get("/msapi/appver/:key", GetApplicationVersion) // single ApplicationVersion based on name or key
+	app.Post("/msapi/appver", NewApplicationVersion)     // save a single ApplicationVersion
 }
 
 // @title Ortelius v11 ApplicationVersion Microservice
