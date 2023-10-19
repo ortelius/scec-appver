@@ -1,4 +1,4 @@
-// Ortelius v11 appver Microservice that handles creating and retrieving appver
+// Ortelius v11 ApplicationVersion Microservice that handles creating and retrieving ApplicationVersion
 package main
 
 import (
@@ -18,23 +18,23 @@ import (
 var logger = database.InitLogger()
 var dbconn = database.InitializeDB("evidence")
 
-// GetAppvers godoc
-// @Summary Get a List of appvers
-// @Description Get a list of appvers for the user.
-// @Tags appver
+// GetApplicationVersion godoc
+// @Summary Get a List of ApplicationVersion
+// @Description Get a list of ApplicationVersion for the user.
+// @Tags ApplicationVersion
 // @Accept */*
 // @Produce json
 // @Success 200
 // @Router /msapi/appver [get]
-func GetAppvers(c *fiber.Ctx) error {
+func GetApplicationVersions(c *fiber.Ctx) error {
 
 	var cursor driver.Cursor       // db cursor for rows
 	var err error                  // for error handling
 	var ctx = context.Background() // use default database context
 
-	// query all the appver in the collection
+	// query all the ApplicationVersion in the collection
 	aql := `FOR appver in evidence
-			FILTER (appver.objtype == 'Appver')
+			FILTER (appver.objtype == 'ApplicationVersion')
 			RETURN appver`
 
 	// execute the query with no parameters
@@ -44,11 +44,11 @@ func GetAppvers(c *fiber.Ctx) error {
 
 	defer cursor.Close() // close the cursor when returning from this function
 
-	applications := model.NewApplications() // define a list of appvers to be returned
+	applications := model.NewApplications() // define a list of ApplicationVersions to be returned
 
 	for cursor.HasMore() { // loop thru all of the documents
 
-		appver := model.NewApplicationVersion() // fetched appver
+		appver := model.NewApplicationVersion() // fetched ApplicationVersion
 		var meta driver.DocumentMeta            // data about the fetch
 
 		// fetch a document from the cursor
@@ -59,13 +59,13 @@ func GetAppvers(c *fiber.Ctx) error {
 		logger.Sugar().Infof("Got doc with key '%s' from query\n", meta.Key)  // log the key
 	}
 
-	return c.JSON(applications) // return the list of appvers in JSON format
+	return c.JSON(applications) // return the list of ApplicationVersion in JSON format
 }
 
-// GetAppver godoc
-// @Summary Get a Appver
-// @Description Get a appver based on the _key or name.
-// @Tags appver
+// GetApplicationVersion godoc
+// @Summary Get a ApplicationVersion
+// @Description Get a ApplicationVersionbased on the _key or name.
+// @Tags ApplicationVersion
 // @Accept */*
 // @Produce json
 // @Success 200
@@ -81,7 +81,7 @@ func GetAppver(c *fiber.Ctx) error {
 		"key": key,
 	}
 
-	// query the appvers that match the key or name
+	// query the ApplicationVersion that match the key or name
 	aql := `FOR appver in evidence
 			FILTER (appver.name == @key or appver._key == @key)
 			RETURN appver`
@@ -114,15 +114,15 @@ func GetAppver(c *fiber.Ctx) error {
 	return c.JSON(appver) // return the appver in JSON format
 }
 
-// NewAppver godoc
-// @Summary Create a Appver
-// @Description Create a new Appver and persist it
-// @Tags appver
+// NewApplicationVersion godoc
+// @Summary Create a ApplicationVersion
+// @Description Create a new ApplicationVersion and persist it
+// @Tags ApplicationVersion
 // @Accept application/json
 // @Produce json
 // @Success 200
 // @Router /msapi/appver [post]
-func NewAppver(c *fiber.Ctx) error {
+func NewApplicationVersion(c *fiber.Ctx) error {
 
 	var err error                           // for error handling
 	var meta driver.DocumentMeta            // data about the document
@@ -150,14 +150,14 @@ func NewAppver(c *fiber.Ctx) error {
 func setupRoutes(app *fiber.App) {
 
 	app.Get("/swagger/*", swagger.HandlerDefault) // handle displaying the swagger
-	app.Get("/msapi/appver", GetAppvers)          // list of appvers
-	app.Get("/msapi/appver/:key", GetAppver)      // single appver based on name or key
-	app.Post("/msapi/appver", NewAppver)          // save a single appver
+	app.Get("/msapi/appver", GetApplicationVersions)          // list of ApplicationVersion
+	app.Get("/msapi/appver/:key", GetApplicationVersion)      // single ApplicationVersion based on name or key
+	app.Post("/msapi/appver", NewApplicationVersion)          // save a single ApplicationVersion
 }
 
-// @title Ortelius v11 Appver Microservice
+// @title Ortelius v11 ApplicationVersion Microservice
 // @version 11.0.0
-// @description RestAPI for the Appver Object
+// @description RestAPI for the ApplicationVersion Object
 // @description ![Release](https://img.shields.io/github/v/release/ortelius/scec-appver?sort=semver)
 // @description ![license](https://img.shields.io/github/license/ortelius/scec-appver)
 // @description
