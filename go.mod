@@ -4,6 +4,7 @@ go 1.20
 
 require (
 	github.com/arangodb/go-driver v1.6.0
+	github.com/arangodb/go-driver/v2 v2.0.3
 	github.com/gofiber/fiber/v2 v2.50.0
 	github.com/ortelius/scec-commons v0.1.21
 	github.com/swaggo/swag v1.16.2
@@ -56,4 +57,3 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	lukechampine.com/blake3 v1.2.1 // indirect
 )
-
