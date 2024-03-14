@@ -118,6 +118,8 @@ github.com/ortelius/scec-commons v0.1.26 h1:b86R7cUA4HO2rhzBmXaFN/l2sDY/m/Bg1ea4
 github.com/ortelius/scec-commons v0.1.26/go.mod h1:UT+q97OQw7fqyzTwrAbL6Kg3xzvxwtStlZS7ZZgK3mQ=
 github.com/ortelius/scec-commons v0.1.28 h1:I3VTsuoVW1+nu0Ez2vgpWt3oxI9rGgUM8LUeEa6g8YE=
 github.com/ortelius/scec-commons v0.1.28/go.mod h1:owCo97IeEAIs6E4xB+mauGPMabh8HaGpaNtbyv1A8kE=
+github.com/ortelius/scec-commons v0.1.30 h1:4Mgx1uC8xDjibtg6Sbn2tN2sYeH7lo/OkZs97mSCOdY=
+github.com/ortelius/scec-commons v0.1.30/go.mod h1:owCo97IeEAIs6E4xB+mauGPMabh8HaGpaNtbyv1A8kE=
 github.com/philhofer/fwd v1.1.2/go.mod h1:qkPdfjR2SIEbspLqpe1tO4n5yICnr2DY7mqEx2tUTP0=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
