@@ -1,63 +1,73 @@
-# Ortelius v11 Domain Microservice
-RestAPI for the Domain Object
+# Ortelius v11 ApplicationVersion Microservice
 
-## Version: 11.0.0
+> Version 11.0.0
 
-### Terms of service
-<http://swagger.io/terms/>
+RestAPI for the ApplicationVersion Object
+![Release](https://img.shields.io/github/v/release/ortelius/scec-appver?sort=semver)
+![license](https://img.shields.io/github/license/ortelius/scec-appver)
 
-**Contact information:**
-Ortelius Google Group
-ortelius-dev@googlegroups.com
+![Build](https://img.shields.io/github/actions/workflow/status/ortelius/scec-appver/build-push-chart.yml)
+[![MegaLinter](https://github.com/ortelius/scec-appver/workflows/MegaLinter/badge.svg?branch=main)](https://github.com/ortelius/scec-appver/actions?query=workflow%3AMegaLinter+branch%3Amain)
+![CodeQL](https://github.com/ortelius/scec-appver/workflows/CodeQL/badge.svg)
+[![OpenSSF-Scorecard](https://api.securityscorecards.dev/projects/github.com/ortelius/scec-appver/badge)](https://api.securityscorecards.dev/projects/github.com/ortelius/scec-appver)
 
-**License:** [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
+![Discord](https://img.shields.io/discord/722468819091849316)
 
----
-### /msapi/domain
+## Path Table
 
-#### GET
-##### Summary
+| Method | Path | Description |
+| --- | --- | --- |
+| GET | [/msapi/appver](#getmsapiappver) | Get a List of ApplicationVersion |
+| POST | [/msapi/appver](#postmsapiappver) | Create a ApplicationVersion |
+| GET | [/msapi/appver/:key](#getmsapiappverkey) | Get a ApplicationVersion |
 
-Get a List of Domains
+## Reference Table
 
-##### Description
+| Name | Path | Description |
+| --- | --- | --- |
 
-Get a list of domains for the user.
+## Path Details
 
-##### Responses
+***
 
-| Code | Description |
-|------|-------------|
-| 200  | OK          |
+### [GET]/msapi/appver
 
-#### POST
-##### Summary
+- Summary  
+Get a List of ApplicationVersion
 
-Create a Domain
+- Description  
+Get a list of ApplicationVersion for the user.
 
-##### Description
+#### Responses
 
-Create a new Domain and persist it
+- 200 OK
 
-##### Responses
+***
 
-| Code | Description |
-|------|-------------|
-| 200  | OK          |
+### [POST]/msapi/appver
 
-### /msapi/domain/:key
+- Summary  
+Create a ApplicationVersion
 
-#### GET
-##### Summary
+- Description  
+Create a new ApplicationVersion and persist it
 
-Get a Domain
+#### Responses
 
-##### Description
+- 200 OK
 
-Get a domain based on the _key or name.
+***
 
-##### Responses
+### [GET]/msapi/appver/:key
 
-| Code | Description |
-|------|-------------|
-| 200  | OK          |
+- Summary  
+Get a ApplicationVersion
+
+- Description  
+Get a ApplicationVersionbased on the _key or name.
+
+#### Responses
+
+- 200 OK
+
+## References
