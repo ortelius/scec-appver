@@ -2,6 +2,17 @@ apiVersion: v1
 entries:
   scec-appver:
   - apiVersion: v2
+    appVersion: 11.0.654
+    created: "2024-08-02T18:56:01.789665916Z"
+    description: Domain microservice
+    digest: 5efec285c3fe9198b11cfcce4bcbb4b3e3aa5f2b74cd38566b83c945027b4551
+    icon: https://ortelius.github.io/ortelius-charts/logo.png
+    name: scec-appver
+    type: application
+    urls:
+    - https://github.com/ortelius/scec-appver/releases/download/scec-appver-11.0.654/scec-appver-11.0.654.tgz
+    version: 11.0.654
+  - apiVersion: v2
     appVersion: 11.0.652
     created: "2024-07-31T17:48:53.600109112Z"
     description: Domain microservice
@@ -2839,4 +2850,4 @@ entries:
     urls:
     - https://github.com/ortelius/scec-appver/releases/download/scec-appver-11.0.10/scec-appver-11.0.10.tgz
     version: 11.0.10
-generated: "2024-07-31T17:48:53.599747286Z"
+generated: "2024-08-02T18:56:01.789158831Z"
