@@ -140,11 +140,11 @@ func NewApplicationVersion(c *fiber.Ctx) error {
 
 	var resp driver.CollectionDocumentCreateResponse
 	// add the appver to the database.  Ignore if it already exists since it will be identical
-	if resp, err = dbconn.Collection.CreateDocument(ctx, appver); err != nil && !shared.IsConflict(err) {
+	if resp, err = dbconn.s["applications"].CreateDocument(ctx, appver); err != nil && !shared.IsConflict(err) {
 		logger.Sugar().Errorf("Failed to create document: %v", err)
 	}
 	meta = resp.DocumentMeta
-	logger.Sugar().Infof("Created document in collection '%s' in db '%s' key='%s'\n", dbconn.Collection.Name(), dbconn.Database.Name(), meta.Key)
+	logger.Sugar().Infof("Created document in collection '%s' in db '%s' key='%s'\n", dbconn.Collections["applications"].Name(), dbconn.Database.Name(), meta.Key)
 
 	return c.JSON(appver) // return the appver object in JSON format.  This includes the new _key
 }
